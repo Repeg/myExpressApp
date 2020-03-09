@@ -7,7 +7,7 @@ var userApi = userApi.userApi;
 var query = query.query;
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/getAllUserInfo', function(req, res, next) {
   query(userApi.getALLUser,'',(err1,res1)=>{
     console.log(err1,res1);
     res.send(res1);
