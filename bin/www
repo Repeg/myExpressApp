@@ -19,12 +19,14 @@ console.log("----------options---------------");
 console.log(options);
 
 
+var port = normalizePort(process.env.PORT || '1030');
+
 /**
  * Create HTTP/HHTPS server.
  */
 
 // var server = http.createServer(app).listen(80);
-var serverHttps = https.createServer(options,app).listen(1030);
+var serverHttps = https.createServer(options,app).listen(port);
 
 /**
  * Listen on provided port, on all network interfaces.
