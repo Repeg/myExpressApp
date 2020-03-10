@@ -2,7 +2,7 @@ var mysql = require('mysql');
 var dbConfig = require('../config');
 var config = dbConfig.config.DBConfig;
 
-var pool = mysql.createPool({      //创建mysql实例
+var pool = mysql.createPool({//创建mysql实例
     connectionLimit: config.connectionLimit,
     host: config.host,
     port: config.port,
