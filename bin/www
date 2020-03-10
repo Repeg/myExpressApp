@@ -9,10 +9,11 @@ var debug = require('debug')('myexpressapp:server');
 // var http = require('http');
 var https = require('https');
 var fs = require("fs");
+var path = require('path');
 
 var options = {
-  key: fs.readFileSync('./3571509_www.hongzhulp.online.key','utf8'),
-  cert: fs.readFileSync('./3571509_www.hongzhulp.online.pem','utf8')
+  key: fs.readFileSync(path.join(process.cwd(), './3571509_www.hongzhulp.online.key'),'utf8'),
+  cert: fs.readFileSync(path.join(process.cwd(), './3571509_www.hongzhulp.online.pem'),'utf8')
 }
 console.log("---------------" + new Date() + "---------------");
 console.log("----------options---------------");
@@ -34,8 +35,9 @@ var serverHttps = https.createServer(options, app);
 
 // server.on('error', onError);
 // server.on('listening', onListening);
-serverHttps.listen(port, function(){
+serverHttps.listen(port, function(res){
   console.log("---------------" + new Date() + "---------------");
+  console.log(JSON.stringify(res));
   console.log('1030端口运行');
 });
 serverHttps.on('error', onError);
