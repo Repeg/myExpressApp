@@ -14,6 +14,7 @@ var options = {
   key: fs.readFileSync('./3571509_www.hongzhulp.online.key'),
   cert: fs.readFileSync('./3571509_www.hongzhulp.online.pem')
 }
+console.log("---------------" + new Date() + "---------------");
 console.log("----------options---------------");
 console.log(options);
 

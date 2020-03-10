@@ -12,12 +12,15 @@ var pool = mysql.createPool({//创建mysql实例
 });
 
 function query(sql, values, callback) {
+    console.log("---------------" + new Date() + "---------------");
     console.log("db pool");
     pool.getConnection(function (err, connection) {
         if(err) throw err;
+        console.log("---------------" + new Date() + "---------------");
         console.log("get connection ");
         //Use the connection
         connection.query(sql, values,function (err, results, fields) {
+            console.log("---------------" + new Date() + "---------------");
             console.log(JSON.stringify(results));
             //每次查询都会 回调
             callback(err, results);
