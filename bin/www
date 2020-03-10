@@ -6,8 +6,8 @@
 
 var app = require('../app');
 var debug = require('debug')('myexpressapp:server');
-// var http = require('http');
-var https = require('https');
+var http = require('http');
+// var https = require('https');
 var fs = require("fs");
 var path = require('path');
 
@@ -26,15 +26,15 @@ var port = normalizePort(process.env.PORT || '8446');
  * Create HTTP/HHTPS server.
  */
 
-// var server = http.createServer(app).listen(80);
+var server = http.createServer(app).listen(8445);
 var serverHttps = https.createServer(options, app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-// server.on('error', onError);
-// server.on('listening', onListening);
+server.on('error', onError);
+server.on('listening', onListening);
 serverHttps.listen(port, function(res){
   console.log("---------------" + new Date() + "---------------");
   console.log(JSON.stringify(res));
