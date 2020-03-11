@@ -15,4 +15,15 @@ router.get('/getAllUserInfo', function(req, res, next) {
   })
 });
 
+router.post('/saveUserInfo', function(req, res, next) {
+  console.log("---------------" + new Date() + "---------------");
+  var data = req.body;
+  var data = [data.nickName, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country];
+  console.log(data);
+  query(userApi.saveUserInfo,data,(error,queryRes)=>{
+    console.log(error,queryRes);
+    res.send(queryRes);
+  })
+});
+
 module.exports = router;
