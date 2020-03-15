@@ -17,13 +17,23 @@ router.get('/getAllUserInfo', function(req, res, next) {
 
 router.post('/saveUserInfo', function(req, res, next) {
   console.log("---------------" + new Date() + "---------------");
-  var data = req.body;
-  var data = [data.nickName, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country];
-  console.log(data);
-  query(userApi.saveUserInfo,data,(error,queryRes)=>{
-    console.log(error,queryRes);
-    res.send(queryRes);
-  })
+  if(req.body.nickName && req.body.avatarUrl){
+    var data = req.body;
+    var data = [data.nickName, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country];
+    console.log(data);
+    query(userApi.saveUserInfo,data,(error,queryRes)=>{
+      console.log(error,queryRes);
+      res.json({
+        "success": true,
+        "msg": "insert success"
+      });
+    })
+  }else{
+    res.json({
+      "success": false,
+      "msg": "params missing"
+    });
+  }
 });
 
 module.exports = router;
