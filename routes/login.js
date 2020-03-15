@@ -11,14 +11,14 @@ var userApi = userApi.userApi;
 var query = query.query;
 
 router.post('/getUserOpenId', function(req, res, next) {
-    console.log("---------------" + new Date() + "---------------");
+    console.log("-------getUserOpenId--------" + new Date() + "---------------");
        //拿到前台给的code后，发送请求
        if(req.body.code) {
         let options = {
             method: 'POST',
             url: 'https://api.weixin.qq.com/sns/jscode2session?',
             formData: {
-                appid: wxConfig.appid,
+                appid: wxConfig.appId,
                 secret: wxConfig.secret,
                 js_code: req.body.code,
                 grant_type: 'authorization_code'
@@ -36,14 +36,17 @@ router.post('/getUserOpenId', function(req, res, next) {
             } else {
                 //返回值的字符串转JSON
                 let _data = JSON.parse(body);
+                console.log("---------_data = JSON.parse(body)--------------------");
+                console.log(_data);
 
                 //根据返回值创建token
-                let _l = jwt.createHoursToken(req.body.code, _data.openid, _data.session_key);
-                let _s = jwt.createMonthToken(req.body.code, _data.openid, _data.session_key);
-
-                const users = [];
+                let secretOrPrivateKey = "lipei19931006"; // 这是加密的key（密钥） 
+                let token = jwt.sign(_data, secretOrPrivateKey, {
+                    expiresIn: 60*60*24  // 1小时过期
+                });
+                var users = [];
                 query(userApi.getALLUser,'',(err1,res1)=>{
-                    console.log("---------------" + new Date() + "---------------");
+                    console.log("------getALLUser---------" + new Date() + "---------------");
                     console.log(err1,res1);
                     users = res1;
                     users.count({
