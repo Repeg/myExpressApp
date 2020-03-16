@@ -63,8 +63,6 @@ router.post('/getUserOpenId', function(req, res, next) {
                                     "status": "ok",
                                     "token": _l
                                 });
-                                client.close();
-    
                             })
                         };
                         //当数据库中查询到openid时，更新token
