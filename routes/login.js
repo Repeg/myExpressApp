@@ -10,7 +10,7 @@ wxConfig = wxConfig.config.wxConfig;
 var userApi = userApi.userApi;
 var query = query.query;
 
-router.post('/getUserOpenId', function(req, res, next) {
+router.get('/getUserOpenId', function(req, res, next) {
     console.log("-------getUserOpenId--------" + new Date() + "---------------");
        //拿到前台给的code后，发送请求
        if(req.body.code) {
@@ -96,8 +96,8 @@ router.post('/getUserOpenId', function(req, res, next) {
         });
     } else {
         res.json({
-            "status": "error",
-            "code": "0004"
+            "success": false,
+            "msg": "params missing"
         });
     }
 });
