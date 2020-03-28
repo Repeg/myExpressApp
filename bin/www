@@ -12,8 +12,8 @@ var fs = require("fs");
 var path = require('path');
 
 var options = {
-  key: fs.readFileSync(path.join(process.cwd(), '../bin/3641657_www.hongzhulp.online.key'),'utf8'),
-  cert: fs.readFileSync(path.join(process.cwd(), '../bin/3641657_www.hongzhulp.online.pem'),'utf8')
+  key: fs.readFileSync(path.join(process.cwd(), './bin/3641657_www.hongzhulp.online.key'),'utf8'),
+  cert: fs.readFileSync(path.join(process.cwd(), './bin/3641657_www.hongzhulp.online.pem'),'utf8')
 }
 console.log("---------------" + new Date() + "---------------");
 console.log("----------options---------------");
