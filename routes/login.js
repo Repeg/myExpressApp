@@ -44,6 +44,8 @@ router.get('/getUserOpenId', function(req, res, next) {
                 let token = jwt.sign(_data, secretOrPrivateKey, {
                     expiresIn: 60*60*24  // 1小时过期
                 });
+                console.log("---------token-----------------");
+                console.log(token);
                 query(userApi.getUserWithOpenid,[_data.openid],(err1,res1)=>{
                     console.log("------getUserWithOpenid-----_data.openid----" + new Date() + "---------------");
                     console.log(err1,res1);
@@ -52,11 +54,33 @@ router.get('/getUserOpenId', function(req, res, next) {
                         query(userApi.updateTokenByOpenid,[token,_data.openid],(err2,res2)=>{
                             console.log("------updateTokenByOpenid-----_data.openid----" + new Date() + "---------------");
                             console.log(err2,res2);
+                            if(!err2){
+                                res.json({
+                                    "success": true,
+                                    "msg": "updateTokenByOpenid success"
+                                });
+                            }else{
+                                res.json({
+                                    "success": false,
+                                    "msg": err2
+                                });
+                            }
                         })
                     }else{
                         query(userApi.insertUserTokenAndOpenid,[_data.openid,token],(err2,res2)=>{
                             console.log("------insertUserTokenAndOpenid-----_data.openid----" + new Date() + "---------------");
                             console.log(err2,res2);
+                            if(!err2){
+                                res.json({
+                                    "success": true,
+                                    "msg": "insertUserTokenAndOpenid success"
+                                });
+                            }else{
+                                res.json({
+                                    "success": false,
+                                    "msg": err2
+                                });
+                            }
                         })
                     }
                 })
