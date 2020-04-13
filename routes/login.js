@@ -56,6 +56,8 @@ router.get('/getUserOpenId', function(req, res, next) {
                             console.log(err2,res2);
                             if(!err2){
                                 res.json({
+                                    "token":token,
+                                    "openid":_data.openid,
                                     "success": true,
                                     "msg": "updateTokenByOpenid success"
                                 });
@@ -72,6 +74,8 @@ router.get('/getUserOpenId', function(req, res, next) {
                             console.log(err2,res2);
                             if(!err2){
                                 res.json({
+                                    "token":token,
+                                    "openid":_data.openid,
                                     "success": true,
                                     "msg": "insertUserTokenAndOpenid success"
                                 });

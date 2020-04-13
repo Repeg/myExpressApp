@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   // res.render('index', { title: 'Express' });
   console.log("---------------" + new Date() + "---------------");
   console.log('-------------req.protocol----------------');
-  console.log(req.protocol);
+  console.log(req);
   res.send('respond with a resource');
 });
 
