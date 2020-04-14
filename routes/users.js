@@ -19,7 +19,7 @@ router.post('/saveUserInfo', function(req, res, next) {
   console.log("---------------" + new Date() + "------"+ new Date().getTime() +"---------------");
   if(req.body.nickName && req.body.avatarUrl && req.body.openid){
     var data = req.body;
-    var data = [data.nickName,data.openid, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country];
+    var data = [data.openid, data.nickName, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country];
     console.log(data);
     query(userApi.saveUserInfo,data,(error,queryRes)=>{
       console.log(error,queryRes);
