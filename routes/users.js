@@ -9,14 +9,14 @@ var query = query.query;
 
 router.get('/getAllUserInfo', function(req, res, next) {
   query(userApi.getALLUser,'',(err1,res1)=>{
-    console.log("---------------" + new Date() + "---------------");
+    console.log("---------------" + new Date() + "------"+ new Date().getTime() +"---------------");
     console.log(err1,res1);
     res.send(res1);
   })
 });
 
 router.post('/saveUserInfo', function(req, res, next) {
-  console.log("---------------" + new Date() + "---------------");
+  console.log("---------------" + new Date() + "------"+ new Date().getTime() +"---------------");
   if(req.body.nickName && req.body.avatarUrl && req.body.openid){
     var data = req.body;
     var data = [data.nickName,data.openid, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country];

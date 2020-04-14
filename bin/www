@@ -15,7 +15,7 @@ var options = {
   key: fs.readFileSync(path.join(process.cwd(), './bin/3641657_www.hongzhulp.online.key'),'utf8'),
   cert: fs.readFileSync(path.join(process.cwd(), './bin/3641657_www.hongzhulp.online.pem'),'utf8')
 }
-// console.log("---------------" + new Date() + "---------------");
+// console.log("---------------" + new Date() + "------"+ new Date().getTime() +"---------------");
 // console.log("----------options---------------");
 // console.log(options);
 
@@ -36,7 +36,7 @@ var serverHttps = https.createServer(options, app);
 // server.on('error', onError);
 // server.on('listening', onListening);
 serverHttps.listen(port, function(){
-  console.log("---------------" + new Date() + "---------------");
+  console.log("---------------" + new Date() + "------"+ new Date().getTime() +"---------------");
   console.log('8446端口运行');
 });
 serverHttps.on('error', onError);
@@ -67,7 +67,7 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-  console.log("---------------" + new Date() + "---------------");
+  console.log("---------------" + new Date() + "------"+ new Date().getTime() +"---------------");
   console.log(error);
   if (error.syscall !== 'listen') {
     throw error;

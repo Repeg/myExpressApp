@@ -11,7 +11,7 @@ var userApi = userApi.userApi;
 var query = query.query;
 
 router.get('/getUserOpenId', function(req, res, next) {
-    console.log("-------getUserOpenId--------" + new Date() + "---------------");
+    console.log("-------getUserOpenId--------" + new Date() + "------"+ new Date().getTime() +"------"+ new Date().getTime() +"---------------");
        //拿到前台给的code后，发送请求
        if(req.query.code) {
         let options = {
@@ -47,12 +47,12 @@ router.get('/getUserOpenId', function(req, res, next) {
                 console.log("---------token-----------------");
                 console.log(token);
                 query(userApi.getUserWithOpenid,[_data.openid],(err1,res1)=>{
-                    console.log("------getUserWithOpenid-----_data.openid----" + new Date() + "---------------");
+                    console.log("------getUserWithOpenid-----_data.openid----" + new Date() + "------"+ new Date().getTime() +"---------------");
                     console.log(err1,res1);
                     users = res1;
                     if(res1.length > 0){
                         query(userApi.updateTokenByOpenid,[token,_data.openid],(err2,res2)=>{
-                            console.log("------updateTokenByOpenid-----_data.openid----" + new Date() + "---------------");
+                            console.log("------updateTokenByOpenid-----_data.openid----" + new Date() + "------"+ new Date().getTime() +"---------------");
                             console.log(err2,res2);
                             if(!err2){
                                 res.json({
@@ -70,7 +70,7 @@ router.get('/getUserOpenId', function(req, res, next) {
                         })
                     }else{
                         query(userApi.insertUserTokenAndOpenid,[_data.openid,token],(err2,res2)=>{
-                            console.log("------insertUserTokenAndOpenid-----_data.openid----" + new Date() + "---------------");
+                            console.log("------insertUserTokenAndOpenid-----_data.openid----" + new Date() + "------"+ new Date().getTime() +"---------------");
                             console.log(err2,res2);
                             if(!err2){
                                 res.json({

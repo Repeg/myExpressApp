@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // res.render('index', { title: 'Express' });
-  console.log("---------------" + new Date() + "---------------");
+  console.log("---------------" + new Date() + "------"+ new Date().getTime() +"---------------");
   console.log('-------------req.protocol----------------');
   console.log(req);
   res.send('respond with a resource');
