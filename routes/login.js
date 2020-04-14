@@ -59,7 +59,7 @@ router.get('/getUserOpenId', function(req, res, next) {
                                     "token":token,
                                     "openid":_data.openid,
                                     "success": true,
-                                    "msg": "updateTokenByOpenid success1"
+                                    "msg": "updateTokenByOpenid success"
                                 });
                             }else{
                                 res.json({
