@@ -23,10 +23,11 @@ router.post('/saveUserInfo', function(req, res, next) {
       console.log("------getUserWithOpenid-----_data.openid----" + new Date() + "------"+ new Date().getTime() +"---------------");
       console.log(err1,res1);
       var api = userApi.saveUserInfo;
+      var queryData = [data.openid, data.nickName, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country];
       if(res1.length > 0){
         api = userApi.updateUserInfo;
+        queryData = [data.nickName, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country, data.openid];
       }
-      var queryData = [data.openid, data.nickName, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country];
       query(api,queryData,(error,queryRes)=>{
         console.log(error,queryRes);
         res.json({
