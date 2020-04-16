@@ -22,7 +22,7 @@ router.post('/saveUserInfo', function(req, res, next) {
     query(userApi.getUserWithOpenid,[req.body.openid],(err1,res1)=>{
       console.log("---------saveUserInfo----getUserWithOpenid---openid-" + req.body.openid + "----" + new Date() + "------"+ new Date().getTime() +"---------------");
       console.log(err1,res1);
-      if(err1.length>0){
+      if(err1){
         res.json({
           "success": false,
           "msg": err1
