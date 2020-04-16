@@ -49,7 +49,6 @@ router.get('/getUserOpenId', function(req, res, next) {
                 query(userApi.getUserWithOpenid,[_data.openid],(err1,res1)=>{
                     console.log("------getUserWithOpenid-----_data.openid----" + new Date() + "------"+ new Date().getTime() +"---------------");
                     console.log(err1,res1);
-                    users = res1;
                     if(res1.length > 0){
                         query(userApi.updateTokenByOpenid,[token,_data.openid],(err2,res2)=>{
                             console.log("------updateTokenByOpenid-----_data.openid----" + new Date() + "------"+ new Date().getTime() +"---------------");

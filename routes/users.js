@@ -19,14 +19,21 @@ router.post('/saveUserInfo', function(req, res, next) {
   console.log("---------------" + new Date() + "------"+ new Date().getTime() +"---------------");
   if(req.body.nickName && req.body.avatarUrl && req.body.openid){
     var data = req.body;
-    var data = [data.openid, data.nickName, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country];
-    console.log(data);
-    query(userApi.saveUserInfo,data,(error,queryRes)=>{
-      console.log(error,queryRes);
-      res.json({
-        "success": true,
-        "msg": "insert success"
-      });
+    query(userApi.getUserWithOpenid,[req.body.openid],(err1,res1)=>{
+      console.log("------getUserWithOpenid-----_data.openid----" + new Date() + "------"+ new Date().getTime() +"---------------");
+      console.log(err1,res1);
+      var api = userApi.saveUserInfo;
+      if(res1.length > 0){
+        api = userApi.updateUserInfo;
+      }
+      var queryData = [data.openid, data.nickName, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country];
+      query(api,queryData,(error,queryRes)=>{
+        console.log(error,queryRes);
+        res.json({
+          "success": true,
+          "msg": "insert success"
+        });
+      })
     })
   }else{
     res.json({
