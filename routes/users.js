@@ -28,18 +28,27 @@ router.post('/saveUserInfo', function(req, res, next) {
           "msg": err1
         });
       }else{
+        var msg = 'new';
         var api = userApi.saveUserInfo;
         var queryData = [data.openid, data.nickName, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country];
         if(res1.length > 0){
           api = userApi.updateUserInfo;
           queryData = [data.nickName, data.nickName, data.avatarUrl, data.gender, data.city, data.province, data.country, data.openid];
+          msg = "";
         }
         query(api,queryData,(error,queryRes)=>{
           console.log(error,queryRes);
-          res.json({
-            "success": true,
-            "msg": "insert success"
-          });
+          if(error){
+            res.json({
+              "success": false,
+              "msg": error
+            });
+          }else{
+            res.json({
+              "success": true,
+              "msg": "saveUserInfo success " + msg
+            });
+          }
         })
       }
     })

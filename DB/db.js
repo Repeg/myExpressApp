@@ -26,7 +26,7 @@ function query(sql, values, callback) {
             callback(err, results);
             //只是释放链接，在缓冲池了，没有被销毁
             connection.release();
-            if(err) throw error;
+            if(err) throw err;
         });
     });
 }
