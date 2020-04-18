@@ -6,10 +6,11 @@ var lineApi = require('../DB/lineApi');
 var lineApi = lineApi.lineApi;
 var query = query.query;
 
-router.get('/addOne', function(req, res, next) {
+router.post('/addOne', function(req, res, next) {
     console.log("-------addOne--------" + new Date() + "------"+ new Date().getTime() +"---------------");
     var time = new Date().getTime();
-    query(lineApi.addOne,[time],(err1,res1)=>{
+    var openid = req.query.openid;
+    query(lineApi.addOne,[time, openid],(err1,res1)=>{
         if(res1){
             res.json({
                 "id": res1.insertId,
