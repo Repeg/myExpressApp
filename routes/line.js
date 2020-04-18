@@ -9,7 +9,7 @@ var query = query.query;
 router.post('/addOne', function(req, res, next) {
     console.log("-------addOne--------" + new Date() + "------"+ new Date().getTime() +"---------------");
     var time = new Date().getTime();
-    var openid = req.query.openid;
+    var openid = req.body.openid;
     query(lineApi.addOne,[time, openid],(err1,res1)=>{
         if(res1){
             res.json({
