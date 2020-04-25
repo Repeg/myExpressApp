@@ -55,13 +55,22 @@ router.post('/addLine', function(req, res, next) {
     var lineName = req.body.lineName;
     query(lineApi.addLine,[lineName, time, openid],(addLineErr, addLineRes)=>{
         if(addLineRes){
-            res.json({
-                "id": addLineRes.insertId,
-                "lineName": lineName,
-                "time": time,
-                "success": true,
-                "msg": "insert addLine success"
-            });
+            query(lineApi.add_user_line,[openid, linesId],(add_user_lineErr,add_user_lineRes)=>{
+                if(add_user_lineErr){
+                    res.json({
+                        "success": false,
+                        "msg": add_user_lineErr
+                    });
+                }else{
+                    res.json({
+                        "id": addLineRes.insertId,
+                        "lineName": lineName,
+                        "time": time,
+                        "success": true,
+                        "msg": "insert addLine success"
+                    });
+                }
+            })
         }else{
             res.json({
                 "success": false,
