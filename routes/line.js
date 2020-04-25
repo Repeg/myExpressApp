@@ -76,8 +76,12 @@ router.get('/getUserLineList', function(req, res, next) {
     var openid = req.query.openid;
     query(lineApi.getUserLineList,[openid],(getLineListErr1,getLineListRes)=>{
         if(getLineListRes){
+            var returnData = {
+                list: getLineListRes,
+                listData: getLineListRes.length
+            }
             res.json({
-                "lines": getLineListRes,
+                "lines": returnData,
                 "success": true,
                 "msg": "getLineList success"
             });
@@ -96,8 +100,7 @@ router.get('/getTimeRangeCount', function(req, res, next) {
     var timeRange = req.query.timeRange;
     queryCount(timeRange, linesId, (successRes)=>{
         res.json({
-            "count": successRes.length,
-            "list": successRes,
+            "count": successRes,
             "success": true,
             "msg": "getTimeRangeCount success"
         });
