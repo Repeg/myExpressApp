@@ -100,7 +100,7 @@ router.get('/getTimeRangeCount', function(req, res, next) {
     var timeRange = req.query.timeRange;
     queryCount(timeRange, linesId, (successRes)=>{
         res.json({
-            "count": successRes,
+            "count": successRes.length,
             "success": true,
             "msg": "getTimeRangeCount success"
         });
