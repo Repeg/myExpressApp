@@ -94,6 +94,24 @@ router.get('/getUserLineList', function(req, res, next) {
     })
 })
 
+router.get('/getTimeRangeCount', function(req, res, next) {
+    console.log("-------getTimeRangeCount--------" + new Date() + "------"+ new Date().getTime() +"---------------");
+    var linesId = req.query.linesId;
+    var timeRange = req.query.timeRange;
+    queryCount(timeRange, linesId, (successRes)=>{
+        res.json({
+            "count": successRes,
+            "success": true,
+            "msg": "getTimeRangeCount success"
+        });
+    },(failRes)=>{
+        res.json({
+            "success": false,
+            "msg": failRes
+        });
+    });
+})
+
 function queryCountFunc(timeRange, linesId, res, time, addOneRes){
     queryCount(timeRange, linesId, (successRes)=>{
         res.json({
