@@ -1,3 +1,3 @@
 3641657_www.hongzhulp.online.key
 3641657_www.hongzhulp.online.pem
-node_modules/
+**/node_modules/
