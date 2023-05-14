@@ -3,11 +3,11 @@ var config = {
         connectionLimit: 10,
         // host:'127.0.0.1',
         // password:'root',
-        host:'47.116.6.139',
-        password:'Li19931006pei',
+        host:'127.0.0.1',
+        password:'root',
         port:'3306',
         user:'root',
-        database:'test'
+        database:'myData'
     },
     wxConfig: {
         appId: 'wx9c5b3351d59450b9',

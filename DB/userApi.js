@@ -1,5 +1,5 @@
 var userApi = {
-    getALLUser: 'select * from user',
+    getALLUser: 'select * from users',
     saveUserInfo: 'INSERT INTO user (id, openid, name, nickName, avatarUrl, gender, city, province, country) VALUES (0,?,?,?,?,?,?,?,?)',
     updateUserInfo: 'UPDATE user SET name=?,nickName=?,avatarUrl=?,gender=?,city=?,province=?,country=? WHERE openid=?',
     getUserWithOpenid: 'select * from user WHERE openid = ?',
