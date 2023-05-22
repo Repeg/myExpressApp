@@ -29,28 +29,28 @@ CREATE TABLE IF NOT EXISTS `trends` (
    PRIMARY KEY ( `id` )
 ) DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `user-trends` (
+CREATE TABLE IF NOT EXISTS `user_trends` (
    `id` INT UNSIGNED AUTO_INCREMENT,
    `trendId` INT NOT NULL,
    `userId` INT NOT NULL,
    PRIMARY KEY ( `id` )
 ) DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `user-artical` (
+CREATE TABLE IF NOT EXISTS `user_artical` (
    `id` INT UNSIGNED AUTO_INCREMENT,
    `articalId` INT NOT NULL,
    `userId` INT NOT NULL,
    PRIMARY KEY ( `id` )
 ) DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `trend-subTrend` (
+CREATE TABLE IF NOT EXISTS `trend_subTrend` (
    `id` INT UNSIGNED AUTO_INCREMENT,
    `trendId` INT NOT NULL,
    `subTrendId` INT NOT NULL,
    PRIMARY KEY ( `id` )
 ) DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `artical-trend` (
+CREATE TABLE IF NOT EXISTS `artical_trend` (
    `id` INT UNSIGNED AUTO_INCREMENT,
    `articalId` INT NOT NULL,
    `trendId` INT NOT NULL,
