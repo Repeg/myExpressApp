@@ -16,6 +16,14 @@ router.get('/getAllUserInfo', function(req, res, next) {
   })
 });
 
+router.get('/getUserWithId', function(req, res, next) {
+  query(userApi.getUserWithId, req.body.id, (err1, userInfo)=>{
+    // logInfo();
+    console.log(err1,res1);
+    res.send(userInfo);
+  })
+});
+
 // router.post('/saveUserInfo', function(req, res, next) {
 //   console.log("---------------" + new Date() + "------"+ new Date().getTime() +"---------------");
 //   if(req.body.nickName && req.body.avatarUrl && req.body.openid){

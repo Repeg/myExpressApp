@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS `user` (
    `userName` VARCHAR(255) NOT NULL DEFAULT '',
    `avatar` VARCHAR(100) NOT NULL DEFAULT '',
    `level` INT NOT NULL DEFAULT 0,
+   `createTime` DATETIME NOT NULL,
    PRIMARY KEY ( `id` )
 ) DEFAULT CHARSET=utf8;
 
