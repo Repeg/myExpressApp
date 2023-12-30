@@ -17,10 +17,19 @@ router.get('/getAllUserInfo', function(req, res, next) {
 });
 
 router.get('/getUserWithId', function(req, res, next) {
-  query(userApi.getUserWithId, req.body.id, (err1, userInfo)=>{
+  query(userApi.getUserWithId, req.body.id, (err1, res1)=>{
     // logInfo();
     console.log(err1,res1);
-    res.send(userInfo);
+    res.send(res1);
+  })
+});
+
+router.post('/addTag', function(req, res, next) {
+  const params = [req.body.userId, req.body.tagId]
+  query(userApi.addTag, params, (err1, res1)=>{
+    // logInfo();
+    console.log(err1,res1);
+    res.send(res1);
   })
 });
 
